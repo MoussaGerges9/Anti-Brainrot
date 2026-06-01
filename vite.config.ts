@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+const repoName = 'Anti-Brainrot'
+
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? `/${repoName}/` : '/',
   plugins: [react()],
-})
+}))
