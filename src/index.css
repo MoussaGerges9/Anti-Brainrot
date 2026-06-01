@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  /* Prevent text selection during cognitive tasks */
+  .select-none * {
+    user-select: none;
+  }
+}
+
+@layer utilities {
+  /* Tabular numbers for RT counters */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}
