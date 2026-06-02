@@ -24,4 +24,25 @@
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum";
   }
+
+  /* Safe-area helpers for mobile notches/status bars */
+  .safe-top-0 {
+    top: env(safe-area-inset-top);
+  }
+
+  .safe-top-4 {
+    top: calc(1rem + env(safe-area-inset-top));
+  }
+
+  .safe-top-12 {
+    top: calc(3rem + env(safe-area-inset-top));
+  }
+
+  .safe-top-16 {
+    top: calc(4rem + env(safe-area-inset-top));
+  }
+
+  .safe-top-pad {
+    padding-top: calc(1rem + env(safe-area-inset-top));
+  }
 }

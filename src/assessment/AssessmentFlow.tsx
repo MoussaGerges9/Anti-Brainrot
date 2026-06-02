@@ -48,7 +48,7 @@ function getRating(score: number): { label: string; color: string; bg: string } 
 function StepIndicator({ steps, currentIndex }: { steps: typeof STEPS; currentIndex: number }) {
   if (currentIndex < 0) return null;
   return (
-    <div className="fixed top-0 left-0 right-0 z-20 bg-white/90 backdrop-blur border-b border-gray-100 px-4 py-2">
+    <div className="fixed top-0 left-0 right-0 z-20 bg-white/90 backdrop-blur border-b border-gray-100 px-4 py-2 safe-top-pad">
       <div className="max-w-xl mx-auto flex items-center gap-3">
         {steps.map((s, i) => (
           <div
@@ -343,7 +343,7 @@ export default function AssessmentFlow() {
       <StepIndicator steps={STEPS} currentIndex={currentStepIndex} />
       <button
         onClick={() => navigate('/')}
-        className="fixed right-4 top-12 z-30 rounded-lg border border-gray-200 bg-white/95 px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-sm backdrop-blur hover:bg-white"
+        className="fixed right-4 top-16 sm:top-4 safe-top-16 sm:safe-top-4 z-30 rounded-lg border border-gray-200 bg-white/95 px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-sm backdrop-blur hover:bg-white"
       >
         Exit to Home
       </button>

@@ -182,11 +182,11 @@ export default function FlankerTask({ level = 1, onComplete }: FlankerTaskProps)
           <p>You will see a row of five arrows. Your job is to respond to the <strong>center arrow</strong> only.</p>
           <div className="bg-gray-50 rounded-xl p-4 text-center space-y-3">
             <p className="text-sm text-gray-500">Example — press ← for left, → for right:</p>
-            <div className="text-4xl font-mono tracking-widest text-brand-700">← ← ← ← ←</div>
+            <div className="text-3xl sm:text-4xl font-mono tracking-[0.2em] sm:tracking-widest text-brand-700 whitespace-nowrap">← ← ← ← ←</div>
             <p className="text-sm text-gray-500">Center arrow points left: press ←</p>
-            <div className="text-4xl font-mono tracking-widest text-brand-700">→ → → → →</div>
+            <div className="text-3xl sm:text-4xl font-mono tracking-[0.2em] sm:tracking-widest text-brand-700 whitespace-nowrap">→ → → → →</div>
             <p className="text-sm text-gray-500">Center arrow points right: press →</p>
-            <div className="text-3xl font-mono tracking-widest text-gray-500">← ← <span className="text-brand-700 font-bold">→</span> ← ←</div>
+            <div className="text-2xl sm:text-3xl font-mono tracking-[0.2em] sm:tracking-widest text-gray-500 whitespace-nowrap">← ← <span className="text-brand-700 font-bold">→</span> ← ←</div>
             <p className="text-xs text-gray-500">Even with opposite side arrows, always answer based on the center one.</p>
           </div>
           <p>Respond as <strong>quickly and accurately</strong> as possible. Use the ← → arrow keys on your keyboard.</p>
@@ -236,7 +236,7 @@ export default function FlankerTask({ level = 1, onComplete }: FlankerTaskProps)
   return (
     <div className="h-dvh overflow-hidden bg-white flex flex-col items-center justify-center select-none">
       {state.blockIndex === 1 && (
-        <div className="fixed top-0 left-0 right-0 p-4 bg-white/95 backdrop-blur shadow-sm z-10 border-b border-gray-100">
+        <div className="fixed top-0 left-0 right-0 p-4 safe-top-pad bg-white/95 backdrop-blur shadow-sm z-10 border-b border-gray-100">
           <ProgressBar value={progress} label="Task Progress" />
         </div>
       )}
@@ -250,7 +250,7 @@ export default function FlankerTask({ level = 1, onComplete }: FlankerTaskProps)
         {/* Stimulus */}
         {state.phase === 'stimulus' && stimulus && (
           <div
-            className={`text-6xl font-mono tracking-widest transition-colors ${
+            className={`text-4xl sm:text-6xl font-mono tracking-[0.2em] sm:tracking-widest whitespace-nowrap transition-colors ${
               state.feedback === 'incorrect' ? 'text-red-500' :
               state.feedback === 'correct'   ? 'text-green-600' : 'text-gray-900'
             }`}

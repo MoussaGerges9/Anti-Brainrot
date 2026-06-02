@@ -138,7 +138,7 @@ export default function TrainingSession() {
     <div className="relative">
       <button
         onClick={() => navigate('/')}
-        className="fixed right-4 top-4 z-30 rounded-lg border border-gray-200 bg-white/95 px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-sm backdrop-blur hover:bg-white"
+        className="fixed right-4 top-16 sm:top-4 safe-top-16 sm:safe-top-4 z-30 rounded-lg border border-gray-200 bg-white/95 px-3 py-1.5 text-xs font-semibold text-gray-700 shadow-sm backdrop-blur hover:bg-white"
       >
         Exit to Home
       </button>

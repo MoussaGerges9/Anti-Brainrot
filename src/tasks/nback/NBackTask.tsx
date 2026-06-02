@@ -181,7 +181,7 @@ export default function NBackTask({ level = 2, onComplete }: NBackTaskProps) {
   return (
     <div className="h-dvh overflow-hidden bg-white flex flex-col items-center justify-center select-none">
       {!state.isPractice && (
-        <div className="fixed top-0 left-0 right-0 p-4 bg-white/95 backdrop-blur shadow-sm z-10 border-b border-gray-100">
+        <div className="fixed top-0 left-0 right-0 p-4 safe-top-pad bg-white/95 backdrop-blur shadow-sm z-10 border-b border-gray-100">
           <ProgressBar value={progress} label="Task Progress" />
         </div>
       )}
