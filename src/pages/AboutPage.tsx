@@ -1,4 +1,4 @@
-import { Brain, Github, Mail, BookOpen, Shield, Linkedin } from 'lucide-react';
+import { Brain, Github, BookOpen, Shield, Linkedin } from 'lucide-react';
 
 export default function AboutPage() {
   return (
@@ -24,27 +24,33 @@ export default function AboutPage() {
             About the project
           </h2>
           <p className="text-brand-100 leading-relaxed">
-            Anti Brainrot measures and trains four core dimensions of attention using
-            paradigms taken directly from experimental cognitive psychology research:
+            Anti Brainrot is built to reduce doomscrolling friction with simple tools that move
+            you from passive refresh loops to intentional action in seconds.
+          </p>
+          <p className="text-brand-100 leading-relaxed">
+            The app currently combines two tracks:
           </p>
           <ul className="space-y-2 text-brand-100">
             <li className="flex items-start gap-2">
               <span className="text-brand-300 mt-0.5">🎯</span>
-              <span><strong className="text-white">Selective Attention</strong> — Flanker task, measures your ability to focus on a target and ignore distractors.</span>
+              <span><strong className="text-white">Attention assessment & training</strong> — Flanker, Go/No-Go, N-back, and PVT tasks based on cognitive psychology paradigms.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-brand-300 mt-0.5">🛑</span>
-              <span><strong className="text-white">Inhibitory Control</strong> — Go / No-Go task, measures how well you suppress impulsive responses.</span>
+              <span className="text-brand-300 mt-0.5">🚀</span>
+              <span><strong className="text-white">2 Minute Task Launcher</strong> — start immediately, reduce inertia, and lock into a short sprint.</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-brand-300 mt-0.5">🧠</span>
-              <span><strong className="text-white">Working Memory</strong> — N-back task, measures your capacity to hold and update information in mind.</span>
+              <span className="text-brand-300 mt-0.5">⏱</span>
+              <span><strong className="text-white">Scroll Time Converter</strong> — turn social media time into concrete equivalents (walking distance, reading pages, focus blocks).</span>
             </li>
             <li className="flex items-start gap-2">
-              <span className="text-brand-300 mt-0.5">⚡</span>
-              <span><strong className="text-white">Sustained Attention</strong> — PVT (Psychomotor Vigilance Task), measures your ability to stay alert over time.</span>
+              <span className="text-brand-300 mt-0.5">🧩</span>
+              <span><strong className="text-white">Boredom Replacer + Random Learning</strong> — instant alternatives and one useful insight instead of another mindless refresh.</span>
             </li>
           </ul>
+          <p className="text-brand-200 text-sm leading-relaxed">
+            No accounts, no databases, no personal history: interactions are intentionally lightweight and in-memory only.
+          </p>
         </section>
 
         {/* About me */}

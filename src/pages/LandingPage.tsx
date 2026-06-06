@@ -27,6 +27,12 @@ export default function LandingPage() {
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
             <button
+              onClick={() => navigate('/tools')}
+              className="px-8 py-4 bg-brand-500 text-white rounded-xl font-semibold text-lg hover:bg-brand-400 active:scale-95 transition"
+            >
+              Quick Anti-Brainrot Tools
+            </button>
+            <button
               onClick={() => navigate('/assessment')}
               className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand-700 rounded-xl font-semibold text-lg hover:bg-brand-50 active:scale-95 transition shadow-lg"
             >
