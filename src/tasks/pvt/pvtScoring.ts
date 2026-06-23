@@ -1,4 +1,4 @@
-import { mean, median, percentileOf, mapRange } from '../../shared/utils/stats';
+import { mean, median, mapRange } from '../../shared/utils/stats';
 import type { TrialData, PVTScore } from '../../shared/types';
 
 const LAPSE_THRESHOLD_MS = 500;
@@ -52,22 +52,3 @@ export function pvtDisplayScore(score: PVTScore, isBaseline: boolean): number {
   if (isBaseline) return 50;
   return Math.round(mapRange(score.lapse_rate ?? 0.05, 0.3, 0, 10, 100));
 }
-
-export function pvtRelativeScore(current: PVTScore, baseline: PVTScore): number {
-  if (!current.valid || !baseline.valid) return 50;
-  const delta = (baseline.lapse_rate ?? 0.05) - (current.lapse_rate ?? 0.05);
-  return clamp(Math.round(50 + delta * 300), 10, 100);
-}
-
-function clamp(v: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, v));
-}
-
-export function pvtSummary(score: PVTScore): string {
-  if (!score.valid) return 'Incomplete session';
-  const lapseStr = ((score.lapse_rate ?? 0) * 100).toFixed(0);
-  const rtStr    = score.median_rt?.toFixed(0) ?? '–';
-  return `Median RT: ${rtStr} ms · Lapses: ${lapseStr}%`;
-}
-
-export { percentileOf };

@@ -1,4 +1,4 @@
-import { mean, median, mapRange } from '../../shared/utils/stats';
+import { mean, mapRange } from '../../shared/utils/stats';
 import type { TrialData, FlankerScore } from '../../shared/types';
 
 export function scoreFlanker(trials: TrialData[]): FlankerScore {
@@ -56,26 +56,3 @@ export function flankerDisplayScore(score: FlankerScore, isBaseline: boolean): n
 
   return Math.round((accScore + fieScore) / 2);
 }
-
-/** Score relative to a previous baseline session */
-export function flankerRelativeScore(current: FlankerScore, baseline: FlankerScore): number {
-  if (!current.valid || !baseline.valid) return 50;
-  if (!baseline.inverse_efficiency || !current.inverse_efficiency) return flankerDisplayScore(current, false);
-
-  // Delta in inverse efficiency (baseline - current, so positive = improvement)
-  const delta = baseline.inverse_efficiency - current.inverse_efficiency;
-  // Each 50ms improvement ≈ +10 points from 50
-  return Math.round(clamp(50 + (delta / 5), 10, 100));
-}
-
-function clamp(v: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, v));
-}
-
-/** Quick string summary for dashboard cards */
-export function flankerSummary(score: FlankerScore): string {
-  if (!score.valid) return 'Incomplete session';
-  return `FIE: ${score.FIE_ms?.toFixed(0)} ms · Accuracy: ${score.accuracy_pct?.toFixed(0)}%`;
-}
-
-export { median };

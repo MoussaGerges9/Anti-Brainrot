@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import FlankerTask from '../tasks/flanker/FlankerTask';
 import GoNoGoTask  from '../tasks/gonogo/GoNoGoTask';
 import NBackTask   from '../tasks/nback/NBackTask';
@@ -135,7 +134,7 @@ export default function AssessmentFlow() {
         pvt:     result.pvtScore,
       };
       const session: StoredSession = {
-        id:          uuidv4(),
+        id:          crypto.randomUUID(),
         sessionType: 'assessment',
         taskType:    'composite',
         startedAt,

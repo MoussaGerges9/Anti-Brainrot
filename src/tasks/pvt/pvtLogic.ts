@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import type { TrialData } from '../../shared/types';
 
 export interface PVTConfig {
@@ -34,7 +33,7 @@ export function recordPVTTrial(
   const LAPSE_THRESHOLD = 500;
 
   return {
-    trialId:          uuidv4(),
+    trialId:          crypto.randomUUID(),
     taskType:         'pvt',
     stimulusOnsetMs:  performance.now() - sessionStartMs,
     stimulusType:     'vigilance',

@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import { shuffle } from '../../shared/utils/stats';
 import type { TrialData } from '../../shared/types';
 
@@ -67,7 +66,7 @@ export function recordFlankerTrial(
   blockIndex: number,
 ): TrialData {
   return {
-    trialId:          uuidv4(),
+    trialId:          crypto.randomUUID(),
     taskType:         'flanker',
     stimulusOnsetMs:  performance.now() - sessionStartMs,
     stimulusType:     stimulus.isCongruent ? 'congruent' : 'incongruent',

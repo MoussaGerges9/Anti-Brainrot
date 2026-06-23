@@ -39,18 +39,3 @@ export function nBackDisplayScore(score: NBackScore, isBaseline: boolean): numbe
   if (isBaseline) return 50;
   return Math.round(mapRange(score.d_prime ?? 1, 0, 3.5, 10, 100));
 }
-
-export function nBackRelativeScore(current: NBackScore, baseline: NBackScore): number {
-  if (!current.valid || !baseline.valid) return 50;
-  const delta = (current.d_prime ?? 0) - (baseline.d_prime ?? 0);
-  return clamp(Math.round(50 + delta * 14), 10, 100);
-}
-
-function clamp(v: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, v));
-}
-
-export function nBackSummary(score: NBackScore): string {
-  if (!score.valid) return 'Incomplete session';
-  return `d′: ${score.d_prime?.toFixed(2) ?? '–'} · Accuracy: ${score.accuracy_pct?.toFixed(0)}%`;
-}

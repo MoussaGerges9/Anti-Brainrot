@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useParams, useNavigate, Navigate } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import FlankerTask from '../tasks/flanker/FlankerTask';
 import GoNoGoTask  from '../tasks/gonogo/GoNoGoTask';
 import NBackTask   from '../tasks/nback/NBackTask';
@@ -45,27 +44,37 @@ export default function TrainingSession() {
     // Compute scores
     let scoreStr = '';
     let currentDiff = difficulty[task];
+    const scores = {
+      flanker: undefined,
+      gonogo: undefined,
+      nback: undefined,
+      pvt: undefined,
+    } as StoredSession['scores'];
 
     if (task === 'flanker') {
       const s = scoreFlanker(trials);
+      scores.flanker = s;
       scoreStr = s.valid ? `FIE: ${s.FIE_ms?.toFixed(0)} ms · Accuracy: ${s.accuracy_pct?.toFixed(0)}%` : 'Session incomplete';
       if (s.valid && s.accuracy_pct !== undefined) {
         currentDiff = updateDifficulty(currentDiff, s.accuracy_pct > 75);
       }
     } else if (task === 'gonogo') {
       const s = scoreGoNoGo(trials);
+      scores.gonogo = s;
       scoreStr = s.valid ? `False alarms: ${((s.false_alarm_rate ?? 0) * 100).toFixed(0)}% · d′: ${s.d_prime?.toFixed(2)}` : 'Session incomplete';
       if (s.valid && s.d_prime !== undefined) {
         currentDiff = updateDifficulty(currentDiff, s.d_prime > 1.5);
       }
     } else if (task === 'nback') {
       const s = scoreNBack(trials);
+      scores.nback = s;
       scoreStr = s.valid ? `d′: ${s.d_prime?.toFixed(2)} · Accuracy: ${s.accuracy_pct?.toFixed(0)}%` : 'Session incomplete';
       if (s.valid && s.accuracy_pct !== undefined) {
         currentDiff = updateDifficulty(currentDiff, s.accuracy_pct > 70);
       }
     } else {
       const s = scorePVT(trials);
+      scores.pvt = s;
       scoreStr = s.valid ? `Median RT: ${s.median_rt?.toFixed(0)} ms · Lapses: ${((s.lapse_rate ?? 0) * 100).toFixed(0)}%` : 'Session incomplete';
       if (s.valid && s.lapse_rate !== undefined) {
         currentDiff = updateDifficulty(currentDiff, s.lapse_rate < 0.10);
@@ -75,16 +84,8 @@ export default function TrainingSession() {
     // Save updated difficulty
     storeDifficulty(task, currentDiff);
 
-    // Save session
-    const scores = {
-      flanker: task === 'flanker' ? scoreFlanker(trials) : undefined,
-      gonogo:  task === 'gonogo'  ? scoreGoNoGo(trials)  : undefined,
-      nback:   task === 'nback'   ? scoreNBack(trials)   : undefined,
-      pvt:     task === 'pvt'     ? scorePVT(trials)     : undefined,
-    };
-
     const session: StoredSession = {
-      id:          uuidv4(),
+      id:          crypto.randomUUID(),
       sessionType: 'training',
       taskType:    task,
       startedAt,

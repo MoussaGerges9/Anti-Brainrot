@@ -1,4 +1,4 @@
-import { mean, dPrime, mapRange } from '../../shared/utils/stats';
+import { dPrime, mapRange } from '../../shared/utils/stats';
 import type { TrialData, GoNoGoScore } from '../../shared/types';
 
 export function scoreGoNoGo(trials: TrialData[]): GoNoGoScore {
@@ -17,10 +17,6 @@ export function scoreGoNoGo(trials: TrialData[]): GoNoGoScore {
 
   const dp = dPrime(hits, goTrials.length, falseAlarms, nogoTrials.length);
 
-  const goRTs       = goTrials
-    .filter((t) => t.isCorrect && t.reactionTimeMs !== null && t.reactionTimeMs > 80)
-    .map((t) => t.reactionTimeMs!);
-
   return {
     valid: true,
     false_alarm_rate: falseAlarmRate,
@@ -36,21 +32,4 @@ export function goNoGoDisplayScore(score: GoNoGoScore, isBaseline: boolean): num
   if (!score.valid) return 50;
   if (isBaseline) return 50;
   return Math.round(mapRange(score.d_prime ?? 1.5, 0, 4, 10, 100));
-}
-
-export function goNoGoRelativeScore(current: GoNoGoScore, baseline: GoNoGoScore): number {
-  if (!current.valid || !baseline.valid) return 50;
-  const delta = (current.d_prime ?? 0) - (baseline.d_prime ?? 0);
-  return clamp(Math.round(50 + delta * 12), 10, 100);
-}
-
-function clamp(v: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, v));
-}
-
-export function goNoGoSummary(score: GoNoGoScore): string {
-  if (!score.valid) return 'Incomplete session';
-  const far = ((score.false_alarm_rate ?? 0) * 100).toFixed(0);
-  const dp  = score.d_prime?.toFixed(2) ?? '–';
-  return `False alarm rate: ${far}% · d′: ${dp}`;
 }

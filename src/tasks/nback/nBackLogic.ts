@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import { shuffle } from '../../shared/utils/stats';
 import type { TrialData } from '../../shared/types';
 
@@ -72,7 +71,7 @@ export function recordNBackTrial(
     (!item.isTarget && !responded);
 
   return {
-    trialId:          uuidv4(),
+    trialId:          crypto.randomUUID(),
     taskType:         'nback',
     stimulusOnsetMs:  performance.now() - sessionStartMs,
     stimulusType:     item.isTarget ? 'target' : 'lure',
