@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Rocket, Timer, Shuffle, Lightbulb } from 'lucide-react';
+import { ArrowRight, Rocket, Timer, Shuffle, Lightbulb, BookOpenCheck } from 'lucide-react';
 
 const TOOLS = [
   {
@@ -25,6 +25,12 @@ const TOOLS = [
     title: 'Random Learning Button',
     description: 'One useful thing to learn in under a minute.',
     icon: Lightbulb,
+  },
+  {
+    to: '/how-to',
+    title: 'HOW TO: Rebuild Core Skills',
+    description: 'Practical drills for search quality, deep reading, and focus habits.',
+    icon: BookOpenCheck,
   },
 ] as const;
 

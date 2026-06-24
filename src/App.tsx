@@ -6,12 +6,13 @@ import TrainingPage   from './pages/TrainingPage';
 import TrainingSession from './training/TrainingSession';
 import AboutPage      from './pages/AboutPage';
 import ToolsPage from './pages/ToolsPage';
+import HowToPage from './pages/HowToPage';
 import TwoMinuteTaskPage from './pages/TwoMinuteTaskPage';
 import ScrollTimeConverterPage from './pages/ScrollTimeConverterPage';
 import BoredomReplacerPage from './pages/BoredomReplacerPage';
 import RandomLearningPage from './pages/RandomLearningPage';
 
-import { Dumbbell, Home, User, Sparkles } from 'lucide-react';
+import { Dumbbell, Home, User, Sparkles, BookOpenCheck } from 'lucide-react';
 
 function isTaskRoute(pathname: string) {
   return ['/assessment', '/training/flanker', '/training/gonogo', '/training/nback', '/training/pvt']
@@ -28,6 +29,7 @@ function NavBar() {
       <div className="max-w-2xl mx-auto flex items-center justify-around sm:justify-start sm:gap-1 sm:px-4 h-14">
         <NavItem to="/"         icon={<Home size={18} />}    label="Home"     />
         <NavItem to="/tools"    icon={<Sparkles size={18} />} label="Tools" />
+        <NavItem to="/how-to"   icon={<BookOpenCheck size={18} />} label="How To" />
         <NavItem to="/training" icon={<Dumbbell size={18} />} label="Training" />
         <NavItem to="/about"    icon={<User size={18} />}     label="About"    />
       </div>
@@ -65,6 +67,7 @@ function AppLayout() {
         <Routes>
           <Route path="/"                  element={<LandingPage />} />
           <Route path="/tools"              element={<ToolsPage />} />
+          <Route path="/how-to"             element={<HowToPage />} />
           <Route path="/tools/2-minute"     element={<TwoMinuteTaskPage />} />
           <Route path="/tools/time-converter" element={<ScrollTimeConverterPage />} />
           <Route path="/tools/boredom-replacer" element={<BoredomReplacerPage />} />

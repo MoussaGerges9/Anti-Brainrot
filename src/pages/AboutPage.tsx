@@ -28,12 +28,16 @@ export default function AboutPage() {
             you from passive refresh loops to intentional action in seconds.
           </p>
           <p className="text-brand-100 leading-relaxed">
-            The app currently combines two tracks:
+            The app currently combines attention training, quick anti-scroll tools, and a practical learning guide:
           </p>
           <ul className="space-y-2 text-brand-100">
             <li className="flex items-start gap-2">
               <span className="text-brand-300 mt-0.5">🎯</span>
               <span><strong className="text-white">Attention assessment & training</strong> — Flanker, Go/No-Go, N-back, and PVT tasks based on cognitive psychology paradigms.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-brand-300 mt-0.5">📘</span>
+              <span><strong className="text-white">HOW TO: Rebuild Core Skills</strong> — a detailed, research-backed guide with step-by-step methods, tips and tricks, and micro-exercises for search, verification, deep reading, and focus.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-brand-300 mt-0.5">🚀</span>
@@ -48,6 +52,9 @@ export default function AboutPage() {
               <span><strong className="text-white">Boredom Replacer + Random Learning</strong> — instant alternatives and one useful insight instead of another mindless refresh.</span>
             </li>
           </ul>
+          <p className="text-brand-100 leading-relaxed">
+            The HOW TO content is grounded in practical media literacy and attention-management frameworks, translated into short repeatable actions.
+          </p>
           <p className="text-brand-200 text-sm leading-relaxed">
             No accounts, no databases, no personal history: interactions are intentionally lightweight and in-memory only.
           </p>
